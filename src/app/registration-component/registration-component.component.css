@@ -1,0 +1,30 @@
+.wholeForm
+{
+    
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.my-form {
+    
+    min-width: 150px;
+    max-width: 200px;
+    max-height: 540px;
+}
+.full-width {
+    width:100%;
+}
+.ng-star-inserted
+{
+    color:#C2185B;
+}
+.mat-form-field-underline {
+    color:#C2185B;
+}
+.toolbarWidth {
+    width:30%;
+   
+}
+.my-card
+{
+    width:27.65%;
+}

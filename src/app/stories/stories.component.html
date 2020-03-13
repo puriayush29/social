@@ -1,0 +1,11 @@
+<button mat-button (click)= "openDialog()"><img class = "stories" 
+width ="100" 
+height="100" 
+src = "https://image.freepik.com/free-photo/hacker-with-laptop_23-2147985341.jpg"
+>
+</button>
+<wc-stories [width]="width" [height]="height" withShadow>
+    <wc-stories-story *ngFor="let story of stories" [src]="story">
+    </wc-stories-story>
+  </wc-stories>
+ 

@@ -1,0 +1,193 @@
+<div class="wholeForm">
+<mat-toolbar class="toolbarWidth">
+    <span>Social</span>
+</mat-toolbar>
+    <mat-card 
+    class="my-card">
+<mat-card-content>
+    Sign up to see photos and videos from your friends.
+<form 
+class="my-form" 
+(ngSubmit) = "onRegister(registerForm)" 
+#registerForm = "ngForm">
+    <mat-form-field 
+    class="full-width">
+        <mat-label>First Name</mat-label>
+        <input 
+        matInput 
+        placeholder="First Name" 
+        minlength="3"
+        name="firstName"
+        ngModel
+        #firstName="ngModel"
+        
+        required >
+        <mat-error *ngIf = "firstName.invalid">
+            <mat-error *ngIf = "firstName.errors.required">
+                Pls enter the first name field
+            </mat-error>
+           
+            <mat-error *ngIf = "firstName.errors.minlength">
+                Name should be minimun of {{firstName.errors.minlength.requiredLength}} characters..
+            </mat-error>
+           
+        </mat-error>
+    </mat-form-field>
+    
+    <mat-form-field 
+    class="full-width">
+        <mat-label>Last Name</mat-label>
+        <input 
+        matInput 
+        placeholder="Last Name"
+         minlength="3"
+          
+       name="lastName"
+        ngModel 
+        #lastName = "ngModel" 
+        required>
+        <mat-error *ngIf = "lastName.invalid">
+            <mat-error *ngIf = "lastName.errors.required">
+                Pls enter the last name field
+            </mat-error>
+           
+            <mat-error *ngIf = "lastName.errors.minlength">
+                Name should be minimun of {{lastName.errors.minlength.requiredLength}} characters..
+            </mat-error>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field 
+    class="full-width">
+        <mat-label>Mobile Number</mat-label>
+        <input 
+        matInput 
+        placeholder="Mobile number" 
+        minlength="10"
+        
+      name="mob"
+        ngModel 
+        #mob = "ngModel" 
+        pattern = "^((\\+91-?)|0)?[0-9]{10}$"
+        required>
+        <mat-error *ngIf = "mob.invalid">
+            <mat-error *ngIf = "mob.errors.required">
+                Pls enter the mobile number
+            </mat-error>
+           
+            <mat-error *ngIf = "mob.errors.minlength">
+                 mobile number does not contain 
+                 {{mob.errors.minlength.requiredLength}} digits.
+            </mat-error>
+            <mat-error *ngIf = "mob.errors.pattern">
+                mobile number should contain digits from 0-9.
+           </mat-error>
+           
+           </mat-error>
+        
+    </mat-form-field>
+
+    <mat-form-field 
+    class="full-width">
+        <mat-label>Email address</mat-label>
+        <input 
+        type="email"
+        matInput 
+        placeholder="Email" 
+       
+        name="email"
+        ngModel
+         #email = "ngModel" 
+         pattern = "^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+         required>
+        <mat-error *ngIf = "email.invalid">
+            <mat-error *ngIf = "email.errors.required">
+                Pls enter the email address
+            </mat-error>
+            <mat-error *ngIf = "email.errors.pattern">
+                email address should be like abc@gmail.com
+            </mat-error>
+            
+        </mat-error>
+    </mat-form-field>
+    
+    <mat-form-field 
+    class="full-width">
+        <mat-label>Password</mat-label>
+        <input 
+        id="mysecretpassword" 
+        type="password" 
+        placeholder="Password"  
+        minlength="9"
+        pattern = "" 
+      
+        name="password"
+        ngModel 
+        #password = "ngModel" 
+        required 
+        pattern  = "^(?=.*[a-z].*[a-z])(?=.*[A-Z].*[A-Z])(?=.*\d.*\d)(?=.*\W.*\W)[a-zA-Z0-9\S]{9,}$"
+        matInput 
+        >
+        <!--
+        <i matSuffix
+        class="material-icons"
+        showHideTrigger = "mysecretpassword"
+        
+     [showHideStatus]= "{materialIcon:true,id:'mysecretpassword'}" 
+        ></i>
+        -->
+        <mat-error *ngIf = "password.invalid">
+            <mat-error *ngIf = "password.errors.required">
+                Pls enter the password field
+            </mat-error>
+            <mat-error *ngIf = "password.errors.minlength">
+                password should be minimun of {{password.errors.minlength.requiredLength}} characters..
+           </mat-error>
+           <mat-error *ngIf = "password.errors.pattern">
+            This pattern requires at least two lowercase letters,
+             two uppercase letters, two digits, and two special characters. 
+             There must be a minimum of 9 characters total, 
+            and no white space characters are allowed.
+       </mat-error>
+       
+           </mat-error>
+    </mat-form-field>
+    <section class="example-section">
+        <label 
+        class="example-margin">Gender:</label><br>
+        <mat-radio-group name="gender"  [(ngModel)]="gender">
+          <mat-radio-button 
+          class="example-margin" 
+          value="male"> Male </mat-radio-button>&nbsp;
+          <mat-radio-button 
+          class="example-margin" 
+          value="female"> Female </mat-radio-button>&nbsp;
+          <mat-radio-button 
+          class="example-margin" 
+          value="other"> Other </mat-radio-button>
+        </mat-radio-group>&nbsp;
+      </section>
+      <mat-form-field>
+          <mat-label>Date of Birth</mat-label>
+          <input 
+          matInput 
+          [matDatepicker] = "picker" 
+          placeholder="Choose a date">
+          <mat-datepicker-toggle 
+          matSuffix [for] = "picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    <mat-card-actions>
+    <button 
+    mat-raised-button 
+    type="submit" color="primary" [disabled] = "!registerForm.valid" (click) = "registerProcess(registerForm)">Sign Up</button>
+       
+</mat-card-actions>
+<p>By clicking Sign up, you agree to our Terms, Data Policy and Cookie Policy. 
+You may receive SMS notifications from us and can opt out at any time.</p>
+</form>
+</mat-card-content>
+    </mat-card>
+    </div>
+    
+    
+    

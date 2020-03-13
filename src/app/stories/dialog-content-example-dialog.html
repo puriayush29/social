@@ -1,0 +1,85 @@
+<style>
+  [type="file"] {
+  height: 0;
+  overflow: hidden;
+  width: 0;
+}
+
+[type="file"] + label {
+  background: #f15d22;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'Poppins', sans-serif;
+  font-size: inherit;
+  font-weight: 400;
+  margin-bottom: 1rem;
+  outline: none;
+  padding: 1rem 50px;
+  position: relative;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  vertical-align: middle;
+}
+[type="file"] + label:hover {
+  background-color: #d3460d;
+}
+[type="file"] + label.btn-2 {
+  background-color: #99c793;
+  border-radius: 50px;
+  overflow: hidden;
+}
+[type="file"] + label.btn-2::before {
+  color: #fff;
+  content: "\f382";
+  font-family: "Font Awesome 5 ";
+  font-size: 100%;
+  height: 100%;
+  right: 130%;
+  line-height: 3.3;
+  position: absolute;
+  top: 0px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+[type="file"] + label.btn-2:hover {
+  background-color: #497f42;
+}
+[type="file"] + label.btn-2:hover::before {
+  right: 75%;
+}
+textarea
+{
+  overflow: hidden;
+
+}
+</style>
+<h2 mat-dialog-title>Add to Story</h2>
+<mat-dialog-content class="mat-typography">
+  <textarea rows="8" cols="81" placeholder="Write something here...">
+   {{char}}
+  </textarea>
+  <br/>
+  <i style="float:right"
+    (click)="toggled = !toggled"
+    [(emojiPickerIf)]="toggled"
+    [emojiPickerDirection]="'bottom' || 'top' || 'left' || 'right'"
+    (emojiPickerSelect)="handleSelection($event)">😄</i>
+    &nbsp;
+  
+</mat-dialog-content>
+<hr>
+<mat-dialog-actions align="end">
+  <input type="file" id="file" 
+  aria-label="Add Photo or Video" 
+  accept="video/*,  video/x-m4v, video/webm, video/x-ms-wmv, video/x-msvideo, video/3gpp, video/flv, video/x-flv, video/mp4, video/quicktime, video/mpeg, video/ogv, .ts, .mkv, image/*, image/heic, image/heif"
+  name="composer_photo[]"
+  role="button"
+  >
+  <label title="No file Chosen"  for="file" class="btn-2">upload</label>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Post</button>
+</mat-dialog-actions>
+
